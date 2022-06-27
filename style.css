@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;800&display=swap');
+
+/*
+
+COLOR PALLETE:
+
+0081A7
+00AFB9
+FDFCDC
+FED9B7
+F07167
+
+FONTS:
+
+CFCECF
+545354
+
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+#nav-link {
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+    border-right: 1px solid #545354;
+    box-shadow: 10px 20px #FED9B7;
+}
+
+ul li{
+    list-style: none;
+    font-size: 2.5em;
+    font-weight: 800;
+    margin-bottom: 1em;
+}
+
+a{
+    text-decoration: none;
+    color: #CFCECF;
+}
+
+a:hover, .selected{
+    color: #545354;
+}
+
+.displayoff{
+    display: none;
+}
+
+#render-container{
+    width: 100%;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 700px;
+    height: 500px;
+    border: 1px solid #545354;
+    border-radius: 50px;
+    box-shadow: 10px 15px #FED9B7;
+}
+
+.container img{
+    width: 300px;
+    height: auto;
+    margin-top: 189px;
+    margin-right: 45px;
+
+    animation-duration: 1s;
+    animation-name: slideinup;
+    font-size: 1.5em;
+    font-weight: 200;
+  }
+  
+  @keyframes slideinup {
+    from {
+      opacity: 0%;
+    }
+  
+    to {
+      opacity: 100%;
+    }
+}
+
+#skills-info img{
+    width: 180px;
+    margin-top: 275px;
+}
+
+#info{
+    width: 70%;
+    height: 80%;
+    margin-left: 40px;
+    color: #545354;
+    margin-bottom: 40px;
+}
+
+#info p {
+    margin-top: 20px;
+    animation-duration: 1s;
+    animation-name: slidein;
+    font-size: 1.5em;
+    font-weight: 200;
+}
+  
+ @keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 100%
+    }
+  
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+.displayoff{
+    display: none !important;
+}
