@@ -1,20 +1,20 @@
 {
     "code": [
-        "src/icons/html-5.png",
-        "src/icons/css-3.png",
-        "src/icons/bootstrap.png",
-        "src/icons/js.png",
-        "src/icons/typescript.png",
-        "src/icons/node-js.png",
-        "src/icons/physics.png",
-        "src/icons/c-.png",
-        "src/icons/java.png"
+        "./src/icons/html-5.png",
+        "./src/icons/css-3.png",
+        "./src/icons/bootstrap.png",
+        "./src/icons/js.png",
+        "./src/icons/typescript.png",
+        "./src/icons/node-js.png",
+        "./src/icons/physics.png",
+        "./src/icons/c-.png",
+        "./src/icons/java.png"
     ],
     "design": [
-        "src/icons/figma.png",
-        "src/icons/illustrator.png",
-        "src/icons/photoshop.png",
-        "src/icons/indesign.png",
-        "src/icons/xd.png"
+        "./src/icons/figma.png",
+        "./src/icons/illustrator.png",
+        "./src/icons/photoshop.png",
+        "./src/icons/indesign.png",
+        "./src/icons/xd.png"
     ]
 }
