@@ -61,5 +61,6 @@
             "place": "LinkedIn",
             "date": "2022"
         }
-    ]
+    ],
+    "send": "./src/icons/send.png"
 }

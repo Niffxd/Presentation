@@ -9,6 +9,7 @@ let codeIcons = document.getElementById('code')
 let designIcons = document.getElementById('design')
 let projects = document.getElementById('project')
 let academics = document.getElementById('academics')
+let submit = document.getElementById('submit')
 
 request.onload = function() {
     request.response.code.map((item) => {
@@ -27,6 +28,10 @@ request.onload = function() {
         academics.innerHTML += `
                                     <p><b>${item.career}</b><br>${item.date} | ${item.place}</p>
                                 `
+    })
+
+    request.response.submit.map((item) => {
+        submit.innerHTML += `<img src=${item}>`
     })
 }
 
