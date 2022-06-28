@@ -20,9 +20,13 @@ request.onload = function() {
         designIcons.innerHTML += `<img src=${item}>`
     })
 
-    request.response.projects.map((item) => {
-        projects.innerHTML += `<img src=${item}>`
-    })
+    if(request.response.projects.length == 0){
+        projects.innerHTML = `<p>In Progress...</p>`
+    }else{
+        request.response.projects.map((item) => {
+            projects.innerHTML += `<img src=${item}>`
+        })
+    }
 
     request.response.academics.map((item) => {
         academics.innerHTML += `
@@ -30,7 +34,7 @@ request.onload = function() {
                                 `
     })
 
-    submit.innerHTML = `<img class="submit" src=${request.response.send}>`
+    submit.innerHTML = `<img src=${request.response.send}>`
 }
 
 document.getElementById('aboutMe').addEventListener('click', () => {
