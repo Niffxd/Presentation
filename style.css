@@ -171,7 +171,7 @@ a:hover, .selected{
 }
 
 #info p{
-    width: 100%;
+    width: 95%;
     margin-top: 20px;
     margin-left: 20px;
     animation: 0.5s slidein;
