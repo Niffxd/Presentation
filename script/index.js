@@ -1,4 +1,4 @@
-const requestJSON = 'https://raw.githubusercontent.com/Niffxd/Presentation/main/json/icons.json'
+const requestJSON = 'https://raw.githubusercontent.com/Niffxd/Presentation/main/json/database.json'
 const request = new XMLHttpRequest()
 
 request.open('GET', requestJSON);
@@ -7,15 +7,27 @@ request.send();
 
 let codeIcons = document.getElementById('code')
 let designIcons = document.getElementById('design')
+let projects = document.getElementById('project')
+let academics = document.getElementById('academics')
 
 request.onload = function() {
-    for(let i = 0; i < request.response.code.length; i++){
-        codeIcons.innerHTML += `<img src=${request.response.code[i]}>`
-    }
+    request.response.code.map((item) => {
+        codeIcons.innerHTML += `<img src=${item}>`
+    })
 
-    for(let i = 0; i < request.response.design.length; i++){
-        designIcons.innerHTML += `<img src=${request.response.design[i]}>`
-    }
+    request.response.design.map((item) => {
+        designIcons.innerHTML += `<img src=${item}>`
+    })
+
+    request.response.projects.map((item) => {
+        projects.innerHTML += `<img src=${item}>`
+    })
+
+    request.response.academics.map((item) => {
+        academics.innerHTML += `
+                                    <p><b>${item.career}</b><br>${item.date} | ${item.place}</p>
+                                `
+    })
 }
 
 document.getElementById('aboutMe').addEventListener('click', () => {

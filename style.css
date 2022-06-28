@@ -71,8 +71,8 @@ a:hover, .selected{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 700px;
-    height: 500px;
+    width: 800px;
+    height: 672px;
     border: 1px solid #545354;
     border-radius: 50px;
     box-shadow: 10px 15px #FED9B7;
@@ -81,7 +81,7 @@ a:hover, .selected{
 .container img{
     width: 300px;
     height: auto;
-    margin-top: 189px;
+    margin-top: 360px;
     margin-right: 45px;
 
     animation: 0.5s characterOpacity;
@@ -101,22 +101,22 @@ a:hover, .selected{
 
 #skills-info img{
     width: 180px;
-    margin-top: 275px;
+    margin-top: 446px;
 }
 
 #projects-info img{
-    width: 180px;
-    margin-top: 275px;
+    width: 130px;
+    margin-top: 446px;
 }
 
-#skills-info img{
-    width: 180px;
-    margin-top: 275px;
+#experience-info img{
+    width: 280px;
+    margin-top: 399px;
 }
 
-#skills-info img{
-    width: 180px;
-    margin-top: 275px;
+#contact-info img{
+    width: 240px;
+    margin-top: 432px;
 }
 
 #code,
@@ -141,6 +141,23 @@ a:hover, .selected{
     }
 }
 
+#project img{
+    width: 320px;
+    height: 200px;
+    margin: 20px;
+    animation: 0.5s projectOpacity;
+}
+
+@keyframes projectOpacity {
+    from {
+        margin-left: 40%;
+    }
+  
+    to {
+        margin-left: 20px;
+    }
+}
+
 #info h2{
     margin: 20px 0;
 }
@@ -153,25 +170,62 @@ a:hover, .selected{
     margin-bottom: 40px;
 }
 
-#info p {
+#info p{
+    width: 100%;
     margin-top: 20px;
     margin-left: 20px;
-    animation-duration: 1s;
-    animation-name: slidein;
+    animation: 0.5s slidein;
     font-size: 1.5em;
     font-weight: 200;
+}
+
+#academics p{
+    font-size: 1em;
 }
   
  @keyframes slidein {
     from {
         margin-left: 100%;
-        width: 92%
     }
   
     to {
         margin-left: 20px;
-        width: 92%;
     }
+}
+
+#contact-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#contact-form label,
+#contact-form input,
+#contact-form textarea,
+#contact-form button{
+    width: 20%;
+    margin-left: 20px;
+    animation: 0.5s slidein;
+    font-size: 1em;
+    font-weight: 200;
+}
+
+#contact-form input{
+    width: 80%;
+    padding-left: 20px;
+    border: 1px #545354 solid;
+    border-radius: 20px;
+}
+
+#contact-form textarea{
+    width: 80%;
+    height: 150px;
+    resize: none;
+}
+
+#contact-form button{
+    align-self: center;
 }
 
 .displayoff{
