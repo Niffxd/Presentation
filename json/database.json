@@ -17,9 +17,7 @@
         "./src/icons/xd.png",
         "./src/icons/figma.png"
     ],
-    "projects": [
-        "./src/projects/github.png"
-    ],
+    "projects": [],
     "academics": [
         {
             "career": "System Engineering",
