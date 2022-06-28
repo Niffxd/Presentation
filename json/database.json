@@ -18,8 +18,6 @@
         "./src/icons/figma.png"
     ],
     "projects": [
-        "./src/projects/linkedin.png",
-        "./src/projects/instagram.png",
         "./src/projects/github.png"
     ]
 }
