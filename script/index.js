@@ -30,9 +30,7 @@ request.onload = function() {
                                 `
     })
 
-    request.response.submit.map((item) => {
-        submit.innerHTML += `<img src=${item}>`
-    })
+    submit.innerHTML = `<img class="submit" src=${request.response.send}>`
 }
 
 document.getElementById('aboutMe').addEventListener('click', () => {

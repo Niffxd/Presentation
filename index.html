@@ -53,16 +53,18 @@
             <div id="info">
                 <h2>Chat with me!</h2>
                 <div id="contact">
-                    <form id="contact-form" action="send.php" method="post">
+                    <form id="contact-form" netlify>
                         <label for="name">Name:</label><br>
                         <input type="text" id="name" name="name" placeholder="Your name here!.."><br>
                         <label for="email">Email:</label><br>
                         <input type="email" id="email" name="email" placeholder="Your email here!.."><br>
                         <label for="number">Phone:</label><br>
-                        <input type="number" id="number" name="number" placeholder="Your phone here!.."><br>
+                        <input type="number" id="number" name="phone" placeholder="Your phone here!.."><br>
                         <label for="message">Message:</label><br>
                         <textarea id="message" name="message" placeholder="Send me a message.."></textarea><br>
-                        <button id="submit" type="submit"></button>
+                        <div class="button">
+                            <button id="submit" type="submit"></button>
+                        </div>
                     </form>
                 </div>
             </div>
