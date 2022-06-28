@@ -81,7 +81,7 @@ a:hover, .selected{
 .container img{
     width: 300px;
     height: auto;
-    margin-top: 360px;
+    margin-top: 361px;
     margin-right: 45px;
 
     animation: 0.5s characterOpacity;
@@ -116,7 +116,7 @@ a:hover, .selected{
 
 #contact-info img{
     width: 240px;
-    margin-top: 432px;
+    margin-top: 433px;
 }
 
 #code,
