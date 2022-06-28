@@ -19,5 +19,47 @@
     ],
     "projects": [
         "./src/projects/github.png"
+    ],
+    "academics": [
+        {
+            "career": "System Engineering",
+            "place": "Universidad Tecnologica Nacional",
+            "date": "2018 - Today"
+        },
+        {
+            "career": "Knowledge Analist",
+            "place": "111Mil Program",
+            "date": "2017"
+        },
+        {
+            "career": "Web Development",
+            "place": "Freelancer",
+            "date": "2022"
+        },
+        {
+            "career": "JavaScript Algorithms and Data Structures",
+            "place": "FreeCodeCamp",
+            "date": "2022"
+        },
+        {
+            "career": "Responsive Web Design",
+            "place": "FreeCodeCamp",
+            "date": "2022"
+        },
+        {
+            "career": "Leadership and conflict resolution courses",
+            "place": "LinkedIn",
+            "date": "2022"
+        },
+        {
+            "career": "Design Thinking",
+            "place": "LinkedIn",
+            "date": "2022"
+        },
+        {
+            "career": "UX/IX Design",
+            "place": "LinkedIn",
+            "date": "2022"
+        }
     ]
 }
