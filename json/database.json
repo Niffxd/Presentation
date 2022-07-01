@@ -66,5 +66,12 @@
     "navigation": [
         "./src/icons/prev.png",
         "./src/icons/next.png"
+    ],
+    "mySelf": [
+        "./src/hi.png",
+        "./src/computer.png",
+        "./src/wink.png",
+        "./src/so2.png",
+        "./src/callMe.png"
     ]
 }
