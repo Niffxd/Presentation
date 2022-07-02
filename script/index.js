@@ -1,3 +1,10 @@
+const requestJSON = 'https://raw.githubusercontent.com/Niffxd/Presentation/main/json/database.json'
+const request = new XMLHttpRequest()
+
+request.open('GET', requestJSON);
+request.responseType = 'json';
+request.send();
+
 document.body.innerHTML = `
     <aside id="nav-link"></aside>
     <section id="render-container"></section>
@@ -8,57 +15,102 @@ document.getElementById('nav-link').innerHTML = `
         <li><a id="aboutMe" class="selected" href="#">About Me</a></li>
         <li><a id="skills" href="#">Skills</a></li>
         <li><a id="projects" href="#">Projects</a></li>
-        <li><a id="experience" href="#">Experience</a></li>
+        <li><a id="academics" href="#">Academics</a></li>
         <li><a id="contact" href="#">Keep in touch!</a></li>
     </ul>
 `
 
-const infoHTML = `
-    <div id="aboutme-info" class="container">
-        <div id="info">
+let activePage = 0
+
+request.onload = () => {
+    const prevButton = `
+        <div id="prevButton" class="prevBtn button nav-button">
+            <button id="prev"><img src=${request.response.navigation[0]}></button>
+        </div>
+    `
+
+    const nextButton = `
+        <div id="nextButton" class="nextBtn button nav-button">
+            <button id="next"><img src=${request.response.navigation[1]}></button>
+        </div>
+    `
+
+    const infoHTML = `
+        <div id="actualContainer">
             <h2>Hi! I'm Nicolas</h2>
             <p>I am from in Argentina, i'm a very communicative, dynamic and proactive person. I have the ability to adapt quickly to changes. Enthusiastic  and curious, I like team work. I am characterized by continuous training and updating my knowledge. I work hard and I learn fast.</p>
             <p>Actually im studying web development and I hope we can collaborate soon!</p>
+            <div id="container-nav">
+                ${nextButton}
+            </div>
         </div>
-        <img src="./src/hi.jpeg">
-    </div>
-`
+        <img id="mySelf" class="hi" src="${request.response.mySelf[0]}">
+    `
 
-const skillsHTML = `
-    <div id="skills-info" class="container displayoff">
-        <div id="info">
+    const skillsHTML = `
+        <div id="actualContainer">
             <h2>To Code</h2>
-            <div id="code"></div>
+            <div id="code">${request.response.code.map(item => {
+                if(typeof item !== String){
+                    return `<img src=${item}>`
+                }
+            }).join('')}</div>
             <h2>To Design</h2>
-            <div id="design"></div>
+            <div id="design">${request.response.design.map(item => {
+                if(typeof item !== String){
+                    return `<img src=${item}>`
+                }
+            }).join('')}</div>
+            <div id="container-nav">
+                ${prevButton}
+                ${nextButton}
+            </div>
         </div>
-        <img src="./src/computer.jpeg">
-    </div>
-`
+        <img id="mySelf" class="computer" src="${request.response.mySelf[1]}">
+    `
 
-const projectsHTML = `
-    <div id="projects-info" class="container displayoff">
-        <div id="info">
+    const loadProjects = () => {
+        if(request.response.projects.length == 0){
+            return `<p>In Progress...</p>`
+        }else{
+            request.response.projects.map(item => {
+                if(typeof item !== String){
+                    return `<img src=${item}>`
+                }
+            }).join('')
+        }
+    }
+
+    const projectsHTML = `
+        <div id="actualContainer">
             <h2>Projects</h2>
-            <div id="project"></div>
+            <div id="project">${loadProjects()}</div>
+            <div id="container-nav">
+                ${prevButton}
+                ${nextButton}
+            </div>
         </div>
-        <img src="./src/wink.jpeg">
-    </div>
-`
+        <img id="mySelf" class="wink" src="${request.response.mySelf[2]}">
+    `
 
-const experienceHTML = `
-    <div id="experience-info" class="container experience displayoff">
-        <div id="info">
+    const academicsHTML = `
+        <div id="actualContainer">
             <h2>Academics</h2>
-            <div id="academics"></div>
+            <div id="academics">${request.response.academics.map(item => {
+                if(typeof item !== String){
+                    return `<p><b>${item.career}</b><br>${item.date} | ${item.place}</p>`
+                }
+            }).join('')}</div>
+            <div id="container-nav">
+                ${prevButton}
+                ${nextButton}
+            </div>
         </div>
-        <img src="./src/so2.jpeg">
-    </div>
-`
+        <img id="mySelf" class="so2" src="${request.response.mySelf[3]}">
+    `
 
-const contactHTML = `
-    <div id="contact-info" class="container displayoff">
-        <div id="info">
+    const contactHTML = `
+        <div id="actualContainer">
             <h2>Chat with me!</h2>
             <div id="contact">
                 <form id="contact-form" netlify>
@@ -71,115 +123,136 @@ const contactHTML = `
                     <label for="message">Message:</label><br>
                     <textarea id="message" name="message" placeholder="Send me a message.."></textarea><br>
                     <div class="button">
-                        <button id="submit" type="submit"></button>
+                        <button id="submit" type="submit"><img src=${request.response.send}></button>
                     </div>
                 </form>
             </div>
+            <div id="container-nav">
+                ${prevButton}
+            </div>
         </div>
-        <img src="./src/callMe.jpeg">
-    </div>
-`
+        <img id="mySelf" class="callMe" src="${request.response.mySelf[4]}">
+    `
 
-document.getElementById('render-container').innerHTML += infoHTML + skillsHTML + projectsHTML + experienceHTML + contactHTML
+    document.getElementById('render-container').innerHTML = renderContent(infoHTML)
 
-const requestJSON = 'https://raw.githubusercontent.com/Niffxd/Presentation/main/json/database.json'
-const request = new XMLHttpRequest()
-
-request.open('GET', requestJSON);
-request.responseType = 'json';
-request.send();
-
-let codeIcons = document.getElementById('code')
-let designIcons = document.getElementById('design')
-let projects = document.getElementById('project')
-let academics = document.getElementById('academics')
-let submit = document.getElementById('submit')
-
-request.onload = () => {
-    request.response.code.map((item) => {
-        codeIcons.innerHTML += `<img src=${item}>`
-    })
-
-    request.response.design.map((item) => {
-        designIcons.innerHTML += `<img src=${item}>`
-    })
-
-    if(request.response.projects.length == 0){
-        projects.innerHTML = `<p>In Progress...</p>`
-    }else{
-        request.response.projects.map((item) => {
-            projects.innerHTML += `<img src=${item}>`
-        })
+    function renderContent (actualPage){
+        return (
+            document.getElementById('render-container').innerHTML = `
+                <div class="container">
+                    <div id="info">${actualPage}</div>
+                </div>
+            `
+        )
     }
 
-    request.response.academics.map((item) => {
-        academics.innerHTML += `<p><b>${item.career}</b><br>${item.date} | ${item.place}</p>`
-    })
+    function aboutMePage () {
+        renderContent(infoHTML)
+        document.getElementById('aboutMe').classList.add('selected')
+        document.getElementById('skills').classList.remove('selected')
+        document.getElementById('projects').classList.remove('selected')
+        document.getElementById('academics').classList.remove('selected')
+        document.getElementById('contact').classList.remove('selected')
+        loadButtons()
+        console.log(activePage)
+    }
+    
+    function skillsPage () {
+        renderContent(skillsHTML)
+        document.getElementById('aboutMe').classList.remove('selected')
+        document.getElementById('skills').classList.add('selected')
+        document.getElementById('projects').classList.remove('selected')
+        document.getElementById('academics').classList.remove('selected')
+        document.getElementById('contact').classList.remove('selected')
+        loadButtons()
+        console.log(activePage)
+    }
+    
+    function projectsPage () {
+        renderContent(projectsHTML)
+        document.getElementById('aboutMe').classList.remove('selected')
+        document.getElementById('skills').classList.remove('selected')
+        document.getElementById('projects').classList.add('selected')
+        document.getElementById('academics').classList.remove('selected')
+        document.getElementById('contact').classList.remove('selected')
+        loadButtons()
+        console.log(activePage)
+    }
+    
+    function academicsPage () {
+        renderContent(academicsHTML)
+        document.getElementById('aboutMe').classList.remove('selected')
+        document.getElementById('skills').classList.remove('selected')
+        document.getElementById('projects').classList.remove('selected')
+        document.getElementById('academics').classList.add('selected')
+        document.getElementById('contact').classList.remove('selected')
+        document.getElementById('actualContainer').classList.add('position')
+        loadButtons()
+        console.log(activePage)
+    }
+    
+    function contactPage () {
+        renderContent(contactHTML)
+        document.getElementById('aboutMe').classList.remove('selected')
+        document.getElementById('skills').classList.remove('selected')
+        document.getElementById('projects').classList.remove('selected')
+        document.getElementById('academics').classList.remove('selected')
+        document.getElementById('contact').classList.add('selected')
+        document.getElementById('actualContainer').classList.add('positionLast')
+        loadButtons()
+        console.log(activePage)
+    }
+    
+    document.getElementById('aboutMe').addEventListener('click', aboutMePage)
+    document.getElementById('skills').addEventListener('click', skillsPage)
+    document.getElementById('projects').addEventListener('click', projectsPage)
+    document.getElementById('academics').addEventListener('click', academicsPage)
+    document.getElementById('contact').addEventListener('click', contactPage)
 
-    submit.innerHTML = `<img src=${request.response.send}>`
+    function loadButtons(){
+        if(activePage < 4){
+            document.querySelector('.nextBtn').addEventListener('click', () => {
+                activePage++
+                console.log(activePage)
+                switch (activePage){
+                    case 1:
+                        skillsPage()
+                        break
+                    case 2:
+                        projectsPage()
+                        break
+                    case 3:
+                        academicsPage()
+                        break
+                    case 4:
+                        contactPage()
+                        break
+                }
+            })
+        }
+    
+        if(activePage > 0){
+            document.querySelector('.prevBtn').addEventListener('click', () => {
+                activePage--
+                console.log(activePage)
+                switch (activePage){
+                    case 0:
+                        aboutMePage()
+                        break
+                    case 1:
+                        skillsPage()
+                        break
+                    case 2:
+                        projectsPage()
+                        break
+                    case 3:
+                        academicsPage()
+                        break
+                }
+            })
+        }
+    }
+
+    loadButtons()
+
 }
-
-document.getElementById('aboutMe').addEventListener('click', () => {
-    document.getElementById('aboutMe').classList.add('selected')
-    document.getElementById('skills').classList.remove('selected')
-    document.getElementById('projects').classList.remove('selected')
-    document.getElementById('experience').classList.remove('selected')
-    document.getElementById('contact').classList.remove('selected')
-    document.getElementById('aboutme-info').classList.remove('displayoff')
-    document.getElementById('skills-info').classList.add('displayoff')
-    document.getElementById('projects-info').classList.add('displayoff')
-    document.getElementById('experience-info').classList.add('displayoff')
-    document.getElementById('contact-info').classList.add('displayoff')
-})
-
-document.getElementById('skills').addEventListener('click', () => {
-    document.getElementById('aboutMe').classList.remove('selected')
-    document.getElementById('skills').classList.add('selected')
-    document.getElementById('projects').classList.remove('selected')
-    document.getElementById('experience').classList.remove('selected')
-    document.getElementById('contact').classList.remove('selected')
-    document.getElementById('aboutme-info').classList.add('displayoff')
-    document.getElementById('skills-info').classList.remove('displayoff')
-    document.getElementById('projects-info').classList.add('displayoff')
-    document.getElementById('experience-info').classList.add('displayoff')
-    document.getElementById('contact-info').classList.add('displayoff')
-})
-
-document.getElementById('projects').addEventListener('click', () => {
-    document.getElementById('aboutMe').classList.remove('selected')
-    document.getElementById('skills').classList.remove('selected')
-    document.getElementById('projects').classList.add('selected')
-    document.getElementById('experience').classList.remove('selected')
-    document.getElementById('contact').classList.remove('selected')
-    document.getElementById('aboutme-info').classList.add('displayoff')
-    document.getElementById('skills-info').classList.add('displayoff')
-    document.getElementById('projects-info').classList.remove('displayoff')
-    document.getElementById('experience-info').classList.add('displayoff')
-    document.getElementById('contact-info').classList.add('displayoff')
-})
-
-document.getElementById('experience').addEventListener('click', () => {
-    document.getElementById('aboutMe').classList.remove('selected')
-    document.getElementById('skills').classList.remove('selected')
-    document.getElementById('projects').classList.remove('selected')
-    document.getElementById('experience').classList.add('selected')
-    document.getElementById('contact').classList.remove('selected')
-    document.getElementById('aboutme-info').classList.add('displayoff')
-    document.getElementById('skills-info').classList.add('displayoff')
-    document.getElementById('projects-info').classList.add('displayoff')
-    document.getElementById('experience-info').classList.remove('displayoff')
-    document.getElementById('contact-info').classList.add('displayoff')
-})
-
-document.getElementById('contact').addEventListener('click', () => {
-    document.getElementById('aboutMe').classList.remove('selected')
-    document.getElementById('skills').classList.remove('selected')
-    document.getElementById('projects').classList.remove('selected')
-    document.getElementById('experience').classList.remove('selected')
-    document.getElementById('contact').classList.add('selected')
-    document.getElementById('aboutme-info').classList.add('displayoff')
-    document.getElementById('skills-info').classList.add('displayoff')
-    document.getElementById('projects-info').classList.add('displayoff')
-    document.getElementById('experience-info').classList.add('displayoff')
-    document.getElementById('contact-info').classList.remove('displayoff')
-})

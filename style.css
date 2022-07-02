@@ -80,12 +80,8 @@ a:hover, .selected{
     box-shadow: 10px 15px #FED9B7;
 }
 
-.container img{
-    width: 300px;
-    height: auto;
-    margin-top: 361px;
-    margin-right: 45px;
-
+#mySelf{
+    position: absolute;
     animation: 0.5s characterOpacity;
     font-size: 1.5em;
     font-weight: 200;
@@ -101,30 +97,42 @@ a:hover, .selected{
     }
 }
 
-#skills-info img{
+.hi{
+    margin-top: 314px;
+    margin-left: 420px;
+}
+
+.computer{
     width: 180px;
-    margin-top: 446px;
+    margin-top: 397px;
+    margin-left: 530px;
 }
 
-#projects-info img{
+.wink{
     width: 130px;
-    margin-top: 446px;
+    margin-top: 430px;
+    margin-left: 580px;
 }
 
-#experience-info img{
+.so2{
     width: 280px;
-    margin-top: 399px;
+    margin-top: 351px;
+    margin-left: 460px;
 }
 
-#contact-info img{
-    width: 270px;
-    height: 280px;
-    margin-top: 390px;
+.callMe{
+    width: 245px;
+    height: 260px;
+    margin-top: 363px;
+    margin-left: 460px;
 }
 
-#code,
-#design{
+#code{
     height: 172px;
+}
+
+#design{
+    height: 60px;
 }
 
 #code img,
@@ -166,9 +174,11 @@ a:hover, .selected{
 }
 
 #info{
-    width: 70%;
+    display: flex;
+    width: 100%;
     height: 80%;
     margin-left: 40px;
+    margin-right: 40px;
     color: #545354;
     margin-bottom: 40px;
 }
@@ -197,6 +207,7 @@ a:hover, .selected{
 }
 
 #contact {
+    width: 450px !important;
     height: 100% !important;
 }
 
@@ -235,12 +246,14 @@ a:hover, .selected{
 
 .button{
     display: flex;
-    width: 80%;
+    width: 85%;
     justify-content: center;
     align-items: center;
 }
 
-#contact-form button{
+#contact-form button,
+#next,
+#prev{
     width: 55px;
     height: 50px;
     align-self: center;
@@ -250,25 +263,37 @@ a:hover, .selected{
     cursor: pointer;
 }
 
-#contact-form button img{
+#contact-form button img,
+#next img,
+#prev img{
     margin: 0;
     padding: 10px;
     width: 50px;
     height: 50px;
 }
 
+.nav-button{
+    display: none;
+}
+
 .displayoff{
     display: none !important;
 }
 
-@media (max-width: 1270px) {
+#actualContainer{
+    width: 100%;
+}
+
+@media (max-width: 1294px) {
     body{
         flex-direction: column;
     }
 
     #nav-link{
-        box-shadow: 0px 10px #FED9B7;
-        margin-bottom: 30px;
+        border-right: none;
+        border-bottom: 1px solid #545354;
+        box-shadow: 15px 10px #FED9B7;
+        margin-bottom: 40px;
     }
 
     #nav-link ul{
@@ -297,10 +322,84 @@ a:hover, .selected{
     }
 
     .container{
-        margin: 0 30px;
+        margin: 0 70px;
+    }
+
+    #mySelf{
+        position: absolute;
+        bottom: 0;
+        right: 20px;
+        width: 360px;
+    }
+
+    .computer{
+        width: 260px !important;
+    }
+
+    .wink{
+        width: 170px !important;
+        margin: 20px;
+    }
+
+    .callMe{
+        width: 330px !important;
+        height: 345px !important;
+    }
+
+    #actualContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #container-nav{
+        display: inherit;
+        align-items: flex-end;
+        width: 65%;
+        height: 100%;
+    }
+
+    .position #container-nav,
+    .positionLast #container-nav{
+        width: 100%;
+        margin-top: -600px;
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+
+    .positionLast #container-nav{
+        margin-top: -624px;
+    }
+
+    .nav-button{
+        display: flex;
+    }
+
+    #prevButton,
+    #nextButton{
+        width: 50px;
+        margin: 50px 20px 0
+    }
+
+    #next,
+    #prev{
+        box-shadow: 5px 6px #FED9B7;
+    }
+
+    #next img,
+    #prev img{
+        width: 55px;
     }
 }
 
-@media (max-width: 768px) {
-    
+@media (max-width: 778px) {
+    #mySelf{
+        display: none;
+    }
+
+    #container-nav{
+        display: inherit;
+        align-items: flex-end;
+        width: 100%;
+        height: 100%;
+    }
 }
